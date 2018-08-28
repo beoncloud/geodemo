@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="warn" name="geo-location-config">
+	<Properties>
+		<Property name="BASE">${log.base.path}</Property>
+		<Property name="ARCHIVE">${BASE}/archive</Property>
+		<Property name="PATTERN">%highlight{%d %p %c{1.} %t %m%n}{FATAL=purple, ERROR=red, WARN=blue, INFO=black, DEBUG=green, TRACE=blue}</Property>
+	</Properties>
+	<Appenders>
+		<RollingRandomAccessFile name="RollingRandomAccessFile"
+								 fileName="${BASE}/geo-location.log"
+								 filePattern="${ARCHIVE}/$${date:yyyy-MM}/geo-location-%d{MM-dd-yyyy}-%i.log.gz"
+								 append="true">
+			<PatternLayout>
+				<Pattern>${PATTERN}</Pattern>
+			</PatternLayout>
+			<Policies>
+				<TimeBasedTriggeringPolicy/>
+				<SizeBasedTriggeringPolicy size="250 MB"/>
+			</Policies>
+		</RollingRandomAccessFile>
+
+	</Appenders>
+	<Loggers>
+		<Root level="info">
+			<AppenderRef ref="RollingRandomAccessFile"/>
+		</Root>
+
+		<Logger name="net.intigral" level="DEBUG" additivity="true"/>
+	</Loggers>
+</Configuration>

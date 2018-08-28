@@ -1,0 +1,37 @@
+archive
+logArchive
+target/
+!.mvn/wrapper/maven-wrapper.jar
+.mvn
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+*.log
+
+nucleus-pages/asset-gen/css
+nucleus-pages/asset-gen/js
+nucleus-pages/asset-gen/img
+nucleus-pages/asset-gen/prepros-6.config
+nucleus-api/dependency-reduced-pom.xml
+.DS_STORE
+dependency-reduced-pom.xml
+

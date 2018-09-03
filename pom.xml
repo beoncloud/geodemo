@@ -79,6 +79,12 @@
 			<artifactId>rapidoid-http-server</artifactId>
 			<version>${rapidoid.version}</version>
 		</dependency>
+
+		<dependency>
+			<groupId>commons-net</groupId>
+			<artifactId>commons-net</artifactId>
+			<version>3.6</version>
+		</dependency>
 	</dependencies>
 
 	<build>

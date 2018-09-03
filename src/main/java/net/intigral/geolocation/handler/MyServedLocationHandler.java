@@ -56,7 +56,11 @@ public final class MyServedLocationHandler implements ReqRespHandler {
 				log.info(":: {}", Unbox.box(statusCode));
 				final var respBodyStr = new BasicResponseHandler().handleEntity(response.getEntity());
 				final var respBody = mapper.readValue(respBodyStr, ReqRespBody.class);
-				resp.body(mapper.writeValueAsBytes(new RespMsg(new RespBody(respBody.getIp(), respBody.getCountryCode(), respBody.getCountryName()))));
+				resp.body(mapper.writeValueAsBytes(new RespMsg(new RespBody(
+					respBody.getIp(),
+					respBody.getCountryCode(),
+					respBody.getCountryName(),
+					txRef))));
 				resp.done();
 				return resp;
 			}

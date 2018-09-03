@@ -4,13 +4,23 @@ public final class RespBody {
 	private String userIP;
 	private String countryCode;
 	private String countryName;
+	private String txRef;
 
 	public RespBody() { }
 
-	public RespBody(final String userIP, final String countryCode, final String countryName) {
+	public RespBody(final String userIP, final String countryCode, final String countryName, final String txRef) {
 		this.userIP = userIP;
 		this.countryCode = countryCode;
 		this.countryName = countryName;
+		this.txRef = txRef;
+	}
+
+	public String getTxRef() {
+		return txRef;
+	}
+
+	public void setTxRef(final String txRef) {
+		this.txRef = txRef;
 	}
 
 	public String getUserIP() {

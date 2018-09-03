@@ -76,7 +76,7 @@ public final class CSVIngester {
 				final var tokens         = line.split(",");
 				final var geonameId      = Integer.parseInt(tokens[0]);
 				final var countryISOCode = tokens[4];
-				final var countryName    = tokens[5];
+				final var countryName    = tokens[5].replaceAll("\"", "");
 				final var country        = new Country(geonameId, countryISOCode, countryName);
 				countryMap.put(geonameId, country);
 			}

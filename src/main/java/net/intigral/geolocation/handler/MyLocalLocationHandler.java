@@ -64,6 +64,7 @@ public final class MyLocalLocationHandler implements ReqRespHandler {
 				return resp;
 			}
 
+			clientIP = clientIP.split(",")[0];
 			final var inetAddr = InetAddress.getByName(clientIP);
 			if (inetAddr.isLoopbackAddress() || inetAddr.isAnyLocalAddress()) {
 				log.info("loopback clientIP received: {}, not proceeding", clientIP);
@@ -80,7 +81,11 @@ public final class MyLocalLocationHandler implements ReqRespHandler {
 				log.info("found country: {} for txRef: {}, clientIP: {}",
 					country.getCountryName(), txRef, clientIP);
 				resp.body(mapper.writeValueAsBytes(
-					new RespMsg(new RespBody(clientIP, country.getCountryISOCode(), country.getCountryName()))));
+					new RespMsg(new RespBody(
+						clientIP,
+						country.getCountryISOCode(),
+						country.getCountryName(),
+						txRef))));
 			}
 			else {
 				log.warn("no country found for txRef: {}, clientIP: {}", txRef, clientIP);

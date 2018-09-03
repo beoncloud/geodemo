@@ -35,13 +35,13 @@ public final class MyLocalLocationHandler implements ReqRespHandler {
 		this.allIPBlocks = allIPBlocks;
 		try {
 			ERR_SERVER_EX = mapper
-				.writeValueAsBytes(new RespMsg(new ErrResp("SERVER_ERR", "server error")));
+				.writeValueAsBytes(new RespMsg(new ErrResp("GL_ERR_EX", "server error")));
 			ERR_INVALID_IP = mapper
-				.writeValueAsBytes(new RespMsg(new ErrResp("LOC_CLIENT_IP", "invalid/missing clientIP")));
+				.writeValueAsBytes(new RespMsg(new ErrResp("GL_CL_IP", "invalid/missing clientIP")));
 			ERR_LOOPBACK_IP = mapper
-				.writeValueAsBytes(new RespMsg(new ErrResp("LOC_CLIENT_IP", "loopback clientIP")));
+				.writeValueAsBytes(new RespMsg(new ErrResp("GL_CL_LB", "loopback clientIP")));
 			ERR_NF = mapper
-				.writeValueAsBytes(new RespMsg(new ErrResp("NF", "no country found")));
+				.writeValueAsBytes(new RespMsg(new ErrResp("GL_CL_NF", "no country found")));
 		}
 		catch (Exception e) {
 			log.error("caught exception while constructing error msgs: ", e);

@@ -1,5 +1,6 @@
 package net.intigral.geolocation;
 
+import net.intigral.geolocation.handler.AllowedCountriesHandler;
 import net.intigral.geolocation.handler.MyLocalLocationHandler;
 import net.intigral.geolocation.handler.MyServedLocationHandler;
 import net.intigral.geolocation.util.CSVIngester;
@@ -71,6 +72,7 @@ public final class Main {
 		final var csvIngester = new CSVIngester(COUNTRY_LIST, IP_LIST);
 		On.get("/v1/myservedlocation").json( new MyServedLocationHandler());
 		On.get("/v1/mylocation").json(new MyLocalLocationHandler(csvIngester.getAllIPBlocks()));
+		On.get("/v1/allowedCountries").json(new AllowedCountriesHandler());
 	}
 
 	public static void main(String[] args) {

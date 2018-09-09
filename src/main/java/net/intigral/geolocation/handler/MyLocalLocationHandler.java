@@ -23,7 +23,7 @@ public final class MyLocalLocationHandler implements ReqRespHandler {
 	private static final Logger log = LogManager.getLogger(MyLocalLocationHandler.class);
 
 	private static final RandomBasedGenerator randGen = Generators.randomBasedGenerator();
-	private static final ObjectMapper         mapper  = new ObjectMapper();
+	static final ObjectMapper         mapper  = new ObjectMapper();
 
 	private final Country[] allIPBlocks;
 	private final byte[]    ERR_SERVER_EX;

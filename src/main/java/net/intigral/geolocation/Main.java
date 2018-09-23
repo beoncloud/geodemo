@@ -1,6 +1,7 @@
 package net.intigral.geolocation;
 
 import net.intigral.geolocation.handler.AllowedCountriesHandler;
+import net.intigral.geolocation.handler.GmtTimeHandler;
 import net.intigral.geolocation.handler.MyLocalLocationHandler;
 import net.intigral.geolocation.handler.MyServedLocationHandler;
 import net.intigral.geolocation.util.CSVIngester;
@@ -73,6 +74,7 @@ public final class Main {
 		On.get("/v1/myservedlocation").json( new MyServedLocationHandler());
 		On.get("/v1/mylocation").json(new MyLocalLocationHandler(csvIngester.getAllIPBlocks()));
 		On.get("/v1/allowedCountries").json(new AllowedCountriesHandler());
+		On.get("/v1/gmtTime").json(new GmtTimeHandler());
 	}
 
 	public static void main(String[] args) {

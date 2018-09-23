@@ -32,5 +32,13 @@ public final class GmtTimeHandler implements ReqRespHandler {
 		public GmtResp(final long data) {
 			this.data = data;
 		}
+
+		public long getData() {
+			return data;
+		}
+
+		public void setData(final long data) {
+			this.data = data;
+		}
 	}
 }

@@ -1,5 +1,6 @@
 package net.intigral.geolocation;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import net.intigral.geolocation.handler.AllowedCountriesHandler;
 import net.intigral.geolocation.handler.GmtTimeHandler;
 import net.intigral.geolocation.handler.MyLocalLocationHandler;
@@ -8,22 +9,20 @@ import net.intigral.geolocation.util.CSVIngester;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.rapidoid.config.Conf;
+import org.rapidoid.http.Req;
+import org.rapidoid.http.ReqRespHandler;
+import org.rapidoid.http.Resp;
 import org.rapidoid.setup.App;
 import org.rapidoid.setup.On;
-import org.redisson.Redisson;
-import org.redisson.api.RedissonClient;
-import org.redisson.codec.KryoCodec;
-import org.redisson.config.Config;
 import org.yaml.snakeyaml.Yaml;
 
 import java.util.Map;
 
 public final class Main {
-	private static final Logger log = LogManager.getLogger(Main.class);
-
 	static final String COUNTRY_LIST = "GeoLite2-Country-Locations-en.csv";
 	static final String IP_LIST      = "GeoLite2-Country-Blocks-IPv4.csv";
-
+	private static final Logger log = LogManager.getLogger(Main.class);
+	private static final ObjectMapper mapper = new ObjectMapper();
 //	private final RedissonClient redissonClient;
 
 	private Main(Map<String, Map<String, ?>> values) {
@@ -63,6 +62,21 @@ public final class Main {
 		}
 	}
 
+	private static Object setCorsHeaders(final Req req, final Resp resp) throws Exception {
+		log.info("Request Headers: {}", req.header("Access-Control-Request-Headers", ""));
+		resp.header("Access-Control-Allow-Origin", "*");
+		resp.header("Access-Control-Allow-Headers", req.header("Access-Control-Request-Headers", ""));
+		log.info("Response Headers: {}", mapper.writeValueAsString(resp.headers()));
+		resp.body(mapper.writeValueAsBytes(mapper.createObjectNode().put("status", "accepted")));
+		resp.done();
+		return resp;
+	}
+
+	public static void main(String[] args) {
+//		final Main mainConfig = new Main(null);
+		bootupServer(null);
+	}
+
 	private static void bootupServer(final Main mainConfig) {
 		App.profiles("production");
 		On.address("0.0.0.0").port(9393);
@@ -71,14 +85,10 @@ public final class Main {
 
 		log.info("setting up geolocation finder...");
 		final var csvIngester = new CSVIngester(COUNTRY_LIST, IP_LIST);
-		On.get("/v1/myservedlocation").json( new MyServedLocationHandler());
+		On.get("/v1/myservedlocation").json(new MyServedLocationHandler());
 		On.get("/v1/mylocation").json(new MyLocalLocationHandler(csvIngester.getAllIPBlocks()));
+		On.options("/v1/mylocation").json((ReqRespHandler) Main::setCorsHeaders);
 		On.get("/v1/allowedCountries").json(new AllowedCountriesHandler());
 		On.get("/v1/gmtTime").json(new GmtTimeHandler());
-	}
-
-	public static void main(String[] args) {
-//		final Main mainConfig = new Main(null);
-		bootupServer(null);
 	}
 }

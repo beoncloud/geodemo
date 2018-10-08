@@ -49,9 +49,11 @@ public final class MyLocalLocationHandler implements ReqRespHandler {
 		}
 	}
 
-	@Override public Object execute(final Req req, final Resp resp) throws Exception {
+	@Override public Object execute(final Req req, final Resp resp) {
 		req.async();
 		try {
+			resp.header("Access-Control-Allow-Origin", "*");
+			resp.header("Access-Control-Allow-Headers", req.header("Access-Control-Request-Headers", ""));
 			String clientIP =
 				req.header("CLIENT_IP",
 					req.header("X-Forwarded-For",

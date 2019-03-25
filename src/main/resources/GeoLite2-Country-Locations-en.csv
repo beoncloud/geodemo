@@ -55,7 +55,7 @@ geoname_id,locale_code,continent_code,continent_name,country_iso_code,country_na
 932692,en,AF,Africa,LS,Lesotho,0
 933860,en,AF,Africa,BW,Botswana,0
 934292,en,AF,Africa,MU,Mauritius,0
-934841,en,AF,Africa,SZ,Swaziland,0
+934841,en,AF,Africa,SZ,Eswatini,0
 935317,en,AF,Africa,RE,Réunion,1
 953987,en,AF,Africa,ZA,"South Africa",0
 1024031,en,AF,Africa,YT,Mayotte,1
@@ -72,7 +72,7 @@ geoname_id,locale_code,continent_code,continent_name,country_iso_code,country_na
 1282028,en,AS,Asia,MV,Maldives,0
 1282588,en,AS,Asia,IO,"British Indian Ocean Territory",0
 1282988,en,AS,Asia,NP,Nepal,0
-1327865,en,AS,Asia,MM,"Myanmar [Burma]",0
+1327865,en,AS,Asia,MM,Myanmar,0
 1512440,en,AS,Asia,UZ,Uzbekistan,0
 1522867,en,AS,Asia,KZ,Kazakhstan,0
 1527747,en,AS,Asia,KG,Kyrgyzstan,0
@@ -92,7 +92,7 @@ geoname_id,locale_code,continent_code,continent_name,country_iso_code,country_na
 1820814,en,AS,Asia,BN,Brunei,0
 1821275,en,AS,Asia,MO,Macao,0
 1831722,en,AS,Asia,KH,Cambodia,0
-1835841,en,AS,Asia,KR,"Republic of Korea",0
+1835841,en,AS,Asia,KR,"South Korea",0
 1861060,en,AS,Asia,JP,Japan,0
 1873107,en,AS,Asia,KP,"North Korea",0
 1880251,en,AS,Asia,SG,Singapore,0
@@ -206,7 +206,7 @@ geoname_id,locale_code,continent_code,continent_name,country_iso_code,country_na
 3577815,en,NA,"North America",VC,"Saint Vincent and the Grenadines",0
 3578097,en,NA,"North America",MS,Montserrat,0
 3578421,en,NA,"North America",MF,"Saint Martin",1
-3578476,en,NA,"North America",BL,Saint-Barthélemy,0
+3578476,en,NA,"North America",BL,"Saint Barthélemy",0
 3579143,en,NA,"North America",GP,Guadeloupe,1
 3580239,en,NA,"North America",GD,Grenada,0
 3580718,en,NA,"North America",KY,"Cayman Islands",0

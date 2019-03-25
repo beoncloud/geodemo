@@ -173,5 +173,14 @@
 				<log.base.path>/var/log</log.base.path>
 			</properties>
 		</profile>
+
+		<profile>
+			<id>prod</id>
+			<properties>
+				<redis.url>redis://sso2-stg-rcluster.xilrx7.clustercfg.euw1.cache.amazonaws.com:6379</redis.url>
+				<server.port>9393</server.port>
+				<log.base.path>/var/log</log.base.path>
+			</properties>
+		</profile>
 	</profiles>
 </project>

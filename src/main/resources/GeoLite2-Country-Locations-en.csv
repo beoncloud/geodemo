@@ -41,7 +41,7 @@ geoname_id,locale_code,continent_code,continent_name,country_iso_code,country_na
 660013,en,EU,Europe,FI,Finland,1
 661882,en,EU,Europe,AX,"Åland",1
 690791,en,EU,Europe,UA,Ukraine,0
-718075,en,EU,Europe,MK,Macedonia,0
+718075,en,EU,Europe,MK,"North Macedonia",0
 719819,en,EU,Europe,HU,Hungary,1
 732800,en,EU,Europe,BG,Bulgaria,1
 783754,en,EU,Europe,AL,Albania,0
@@ -101,7 +101,7 @@ geoname_id,locale_code,continent_code,continent_name,country_iso_code,country_na
 2017370,en,EU,Europe,RU,Russia,0
 2029969,en,AS,Asia,MN,Mongolia,0
 2077456,en,OC,Oceania,AU,Australia,0
-2078138,en,AS,Asia,CX,"Christmas Island",0
+2078138,en,OC,Oceania,CX,"Christmas Island",0
 2080185,en,OC,Oceania,MH,"Marshall Islands",0
 2081918,en,OC,Oceania,FM,"Federated States of Micronesia",0
 2088628,en,OC,Oceania,PG,"Papua New Guinea",0

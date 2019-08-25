@@ -179,7 +179,7 @@ geoname_id,locale_code,continent_code,continent_name,country_iso_code,country_na
 3374084,en,NA,"North America",BB,Barbados,0
 3374766,en,AF,Africa,CV,"Cabo Verde",0
 3378535,en,SA,"South America",GY,Guyana,0
-3381670,en,SA,"South America",GF,"French Guiana",0
+3381670,en,SA,"South America",GF,"French Guiana",1
 3382998,en,SA,"South America",SR,Suriname,0
 3424932,en,NA,"North America",PM,"Saint Pierre and Miquelon",0
 3425505,en,NA,"North America",GL,Greenland,0

@@ -9,6 +9,7 @@ import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.util.Unbox;
 
 import java.io.*;
+import java.nio.file.Path;
 
 public final class CSVIngester {
 	private static final Logger log = LogManager.getLogger(CSVIngester.class);
@@ -16,10 +17,10 @@ public final class CSVIngester {
 	private final Int2ObjectOpenHashMap<Country> countryMap = new Int2ObjectOpenHashMap<>(255);
 	private final Country[]                      allIPBlocks;
 
-	public CSVIngester(final String countryListFile, final String ipListFile) {
+	public CSVIngester(final Path countryListFile, final Path ipListFile) {
 		readGeonames(countryListFile);
 		int lineNum = 1;
-		try (final var is = Thread.currentThread().getContextClassLoader().getResourceAsStream(ipListFile);
+		try (final var is = new FileInputStream(ipListFile.toFile());
 			 final var isr = new InputStreamReader(is);
 			 final var br = new BufferedReader(isr);)
 		{
@@ -66,8 +67,8 @@ public final class CSVIngester {
 		}
 	}
 
-	private void readGeonames(final String countryListFile) {
-		try (final var is = Thread.currentThread().getContextClassLoader().getResourceAsStream(countryListFile);
+	private void readGeonames(final Path countryListFile) {
+		try (final var is = new FileInputStream(countryListFile.toFile());
 			 final var isr = new InputStreamReader(is);
 			 final var br = new BufferedReader(isr);)
 		{

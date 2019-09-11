@@ -16,7 +16,9 @@ import org.rapidoid.setup.App;
 import org.rapidoid.setup.On;
 import org.yaml.snakeyaml.Yaml;
 
+import java.nio.file.Paths;
 import java.util.Map;
+import java.util.Optional;
 
 public final class Main {
 	static final String COUNTRY_LIST = "GeoLite2-Country-Locations-en.csv";
@@ -84,11 +86,25 @@ public final class Main {
 		Conf.NET.set("bufSizeKB", 16);
 
 		log.info("setting up geolocation finder...");
-		final var csvIngester = new CSVIngester(COUNTRY_LIST, IP_LIST);
-		On.get("/v1/myservedlocation").json(new MyServedLocationHandler());
-		On.get("/v1/mylocation").json(new MyLocalLocationHandler(csvIngester.getAllIPBlocks()));
-		On.options("/v1/mylocation").json((ReqRespHandler) Main::setCorsHeaders);
-		On.get("/v1/allowedCountries").json(new AllowedCountriesHandler());
-		On.get("/v1/gmtTime").json(new GmtTimeHandler());
+		try {
+			var countryFilePath = Optional
+				.ofNullable(System.getProperty("mmdb_country"))
+				.map(Paths::get)
+				.orElseThrow(() -> new IllegalArgumentException("mmdb_country path for country_list not provided"));
+			var ipFilePath = Optional
+				.ofNullable(System.getProperty("mmdb_ip"))
+				.map(Paths::get)
+				.orElseThrow(() -> new IllegalArgumentException("mmdb_ip path for ip_list not provided"));
+
+			final var csvIngester = new CSVIngester(countryFilePath, ipFilePath);
+			On.get("/v1/myservedlocation").json(new MyServedLocationHandler());
+			On.get("/v1/mylocation").json(new MyLocalLocationHandler(csvIngester.getAllIPBlocks()));
+			On.options("/v1/mylocation").json((ReqRespHandler) Main::setCorsHeaders);
+			On.get("/v1/allowedCountries").json(new AllowedCountriesHandler());
+			On.get("/v1/gmtTime").json(new GmtTimeHandler());
+		} catch (Exception e) {
+			log.error("caught exception while booting up server: ", e);
+			System.exit(-1);
+		}
 	}
 }

@@ -50,7 +50,7 @@ pwd
 
 /usr/bin/aws ecr get-login-password  --region eu-west-1 | docker login   --username AWS  --password-stdin 667310033456.dkr.ecr.eu-west-1.amazonaws.com
 
-/usr/bin/docker tag geolocationsvcstg:demo 667310033456.dkr.ecr.eu-west-1.amazonaws.com/geolocationsvcstg:$1
+/usr/bin/docker tag geolocationsvcstg:demo 667310033456.dkr.ecr.eu-west-1.amazonaws.com/geolocationsvcstg:demo
 
 /usr/bin/docker push 667310033456.dkr.ecr.eu-west-1.amazonaws.com/geolocationsvcstg:demo'''
       }

@@ -62,7 +62,7 @@ pwd
 
 kubectl rollout history deployment/geolocation-deployment-demo
 
-kubectl set image  deployment/geolocation-deployment-demo geolocation-container=667310033456.dkr.ecr.eu-west-1.amazonaws.com/geolocationsvcstg:demo --record
+kubectl set image  deployment/geolocation-deployment-demo geolocation-container-demo=667310033456.dkr.ecr.eu-west-1.amazonaws.com/geolocationsvcstg:demo --record
 
 kubectl rollout history deployment/geolocation-deployment
 

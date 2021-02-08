@@ -13,7 +13,7 @@ pipeline {
 pwd
 /usr/bin/docker build -t geolocationsvcstg:demo .'''
       }
-    }   
+    }
 
     stage('Unit Testing') {
       parallel {

@@ -1,4 +1,4 @@
- pipeline {
+pipeline {
   agent any
   stages {
     stage('Maven Jar') {
@@ -13,7 +13,7 @@
 pwd
 /usr/bin/docker build -t geolocationsvcstg:demo .'''
       }
-    }
+    }   
 
     stage('Unit Testing') {
       parallel {
@@ -23,18 +23,27 @@ pwd
           }
         }
 
-     stage('test2') {
-       steps {
-          sh 'echo "test3"
-       }
+        stage('test1') {
+          steps {
+            sh 'echo "Test 2"'
+          }
         }
+
+        stage('test2') {
+          steps {
+            sh 'echo "test3"'
+          }
+        }
+
         stage('test3') {
           steps {
             sh 'echo "testing"'
           }
         }
+
       }
     }
+
     stage('Pushing to ECR') {
       steps {
         sh '''
@@ -46,6 +55,7 @@ pwd
 /usr/bin/docker push 667310033456.dkr.ecr.eu-west-1.amazonaws.com/geolocationsvcstg:demo'''
       }
     }
+
     stage('Deploying to EKS') {
       steps {
         sh '''kubectl config set-context --current --namespace=geolocation-service-demo
@@ -63,5 +73,6 @@ sleep 10
 kubectl get pods | grep demo'''
       }
     }
+
   }
 }

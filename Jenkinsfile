@@ -25,7 +25,7 @@ pwd
 
         stage('test1') {
           steps {
-            sh 'mvn clean package sonar:sonar'
+            sh 'mvn sonar:sonar   -Dsonar.projectKey=test   -Dsonar.host.url=https://sq.intigral-i6.net   -Dsonar.login=0c294a875e41aff9c1880669f1b4f8fa185b600f'
           }
         }
 

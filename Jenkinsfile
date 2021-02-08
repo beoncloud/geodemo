@@ -23,7 +23,7 @@ pwd
           }
         }
 
-      stage("build & SonarQube analysis") {
+      stage('build & SonarQube analysis') {
           node {
               withSonarQubeEnv('My SonarQube Server') {
                  sh 'mvn clean package sonar:sonar'
@@ -31,7 +31,7 @@ pwd
           }
       }
 
-      stage("Quality Gate"){
+      stage('Quality Gate'){
           timeout(time: 1, unit: 'HOURS') {
               def qg = waitForQualityGate()
               if (qg.status != 'OK') {
@@ -40,10 +40,10 @@ pwd
           }
       }
 
-        stage('test2') {
-          steps {
-            sh 'echo "test3"'
-          }
+     stage('test2') {
+       steps {
+          sh 'echo "test3"
+       }
         }
 
         stage('test3') {

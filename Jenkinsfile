@@ -25,7 +25,7 @@ pwd
 
         stage('test1') {
           steps {
-            sh 'echo "Test 2"'
+            sh 'mvn clean package sonar:sonar'
           }
         }
 

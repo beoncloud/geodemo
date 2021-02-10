@@ -11,7 +11,7 @@ pipeline {
       steps {
         sh '''echo "#######################################/n BUILDING Container Image /n #################################"
 pwd
-/usr/bin/docker build -t geolocationsvcstg:demo .'''
+/usr/bin/docker build -t geolocationsvc:1.0.1 .'''
       }
     }
 

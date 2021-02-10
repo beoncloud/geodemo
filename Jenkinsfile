@@ -52,7 +52,7 @@ pwd
 
 /usr/bin/docker tag geolocationsvc:1.0.1 667310033456.dkr.ecr.eu-west-1.amazonaws.com/geolocationsvc:1.0.1
 
-/usr/bin/docker push 667310033456.dkr.ecr.eu-west-1.amazonaws.com/geolocationsvcs:1.0.1'''
+/usr/bin/docker push 667310033456.dkr.ecr.eu-west-1.amazonaws.com/geolocationsvc:1.0.1'''
       }
     }
 

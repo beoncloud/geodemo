@@ -1,4 +1,4 @@
-Copyright (C) 2019 Gulf Digital Media Model WLL. All rights reserved Proprietary and confidential
+Copyright (C) 2019 Gulf Digital Media Model WLL. All rights served Proprietary and confidential
 
 Description:
 The source code of Geo Location API for Jawwy TV to identify locations

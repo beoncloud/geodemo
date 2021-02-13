@@ -3,7 +3,6 @@ pipeline {
   stages {
     stage('Maven Jar') {
       steps {
-        git(branch: '${tag}', url: 'https://bitbucket.org/rockettv/geolocation')
         sh '''
 mvn clean install -Pprod -DskipTests'''
       }

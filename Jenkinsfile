@@ -3,7 +3,9 @@ pipeline {
   stages {
     stage('Maven Jar') {
       steps {
-        sh 'mvn clean install -Pprod -DskipTests'
+        git(branch: '${tag}', url: 'https://bitbucket.org/rockettv/geolocation')
+        sh '''
+mvn clean install -Pprod -DskipTests'''
       }
     }
 
@@ -76,6 +78,6 @@ kubectl get pods'''
 
   }
   environment {
-    Brabch = '\'\''
+    tag = 'tags/prod_sep_12_2019'
   }
 }

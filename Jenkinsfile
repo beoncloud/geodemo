@@ -75,4 +75,7 @@ kubectl get pods'''
     }
 
   }
+  environment {
+    Brabch = '\'\''
+  }
 }

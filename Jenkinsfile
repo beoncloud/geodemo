@@ -10,7 +10,7 @@ mvn clean install -Pprod -DskipTests'''
 
     stage('BuildImage') {
       steps {
-        sh '''echo "#######################################/n BUILDING Container Image /n #################################"
+        sh '''echo "#### BUILDING Container Image ###"
 pwd
 /usr/bin/docker build -t geolocationsvc:1.0.1 .'''
       }
@@ -48,11 +48,8 @@ pwd
     stage('Pushing to ECR') {
       steps {
         sh '''
-
 /usr/bin/aws ecr get-login-password  --region eu-west-1 | docker login   --username AWS  --password-stdin 667310033456.dkr.ecr.eu-west-1.amazonaws.com
-
 /usr/bin/docker tag geolocationsvc:1.0.1 667310033456.dkr.ecr.eu-west-1.amazonaws.com/geolocationsvc:1.0.1
-
 /usr/bin/docker push 667310033456.dkr.ecr.eu-west-1.amazonaws.com/geolocationsvc:1.0.1'''
       }
     }
@@ -60,23 +57,17 @@ pwd
     stage('Deploying to EKS') {
       steps {
         sh '''kubectl config set-context --current --namespace=geolocationsvc
-
 kubectl rollout history deployment/geolocation-deployment
-
 kubectl set image  deployment/geolocation-deployment geolocation-container=667310033456.dkr.ecr.eu-west-1.amazonaws.com/geolocationsvc:1.0.1 --record
-
 kubectl rollout history deployment/geolocation-deployment
-
 kubectl get deployments -o wide
-
 sleep 10
-
 kubectl get pods'''
       }
     }
 
   }
   environment {
-    tag = 'tags/prod_sep_12_2019'
+    tag = '$tag'
   }
 }

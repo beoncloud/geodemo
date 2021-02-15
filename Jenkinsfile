@@ -16,20 +16,9 @@ pwd
       }
     }
 
-    stage('Unit Testing') {
-      parallel {
-        stage('Unit Testing') {
-          steps {
-            sh 'echo "Test 1"'
-          }
-        }
-
-        stage('SonarQube Scanning') {
-          steps {
-            sh 'mvn sonar:sonar      -Dsonar.host.url=https://sq.intigral-i6.net   -Dsonar.login=c8c6daa118e0cf42d800cb1b620a95117c944a6d'
-          }
-        }
-
+    stage('SonarQube Scanning') {
+      steps {
+        sh 'mvn sonar:sonar      -Dsonar.host.url=https://sq.intigral-i6.net   -Dsonar.login=80c78e18f182557dca2e12bcc262272c9eb5be9b'
       }
     }
 

@@ -30,18 +30,6 @@ pwd
           }
         }
 
-        stage('test2') {
-          steps {
-            sh 'echo "test3"'
-          }
-        }
-
-        stage('test3') {
-          steps {
-            sh 'echo "testing"'
-          }
-        }
-
       }
     }
 

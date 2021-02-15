@@ -56,7 +56,7 @@ pwd
 
     stage('Deploying to EKS') {
       steps {
-        sh '''kubectl config set-context --current --namespace=geolocationsvc
+        sh '''eks --region eu-west-1 update-kubeconfig --name intigral-eks kubectl config set-context --current --namespace=geolocationsvc
 kubectl rollout history deployment/geolocation-deployment
 kubectl set image  deployment/geolocation-deployment geolocation-container=667310033456.dkr.ecr.eu-west-1.amazonaws.com/geolocationsvc:1.0.1 --record
 kubectl rollout history deployment/geolocation-deployment
